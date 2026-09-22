@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/geist/wght.css';
+@import '@fontsource-variable/newsreader/standard.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --paper: #f3efe6;
+  --ink: #1c1915;
+  --muted: #5c564c;
+  --line: #ddd4c4;
+  --copper: #8f3d22;
+  --copper-ink: #f6f1e8;
+  --soft: #e7e0d4;
+}
+
+.dark {
+  color-scheme: dark;
+  --paper: #131210;
+  --ink: #f3eee6;
+  --muted: #b7aea2;
+  --line: #322e28;
+  --copper: #8f3d22;
+  --copper-ink: #f6f1e8;
+  --soft: #1d1b18;
+}
+
+@theme inline {
+  --font-sans: 'Geist Variable', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: 'Newsreader Variable', 'Iowan Old Style', Palatino, Georgia, serif;
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-copper: var(--copper);
+  --color-copper-ink: var(--copper-ink);
+  --color-soft: var(--soft);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--copper);
+  color: var(--copper-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .frame img {
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .frame:hover img {
+    transform: scale(1.03);
+  }
+}
